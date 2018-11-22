@@ -1,0 +1,26 @@
+dubbo:
+  application:
+    name: boot-consumer
+  registry:
+    protocol: zookeeper
+    address: 127.0.0.1:2181
+  monitor:
+    protocol: register
+  consumer:
+    check: false
+    timeout: 3000
+    version: 1.0
+    retries: 0
+
+server:
+  port: 9999
+  devtools:
+    restart:
+      enabled: true
+      exclude:
+      additional-paths: src/main/java
+logging:
+  level:
+    com:
+    looedu:
+      mapper: debug

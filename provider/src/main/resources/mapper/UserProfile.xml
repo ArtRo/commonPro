@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sangrade.base.provider.dao.UserProfileDao">
+
+  <resultMap id="BaseResultMap" type="com.sangrade.base.api.model.UserProfile">
+			<id column="id" jdbcType="INTEGER" property="id" />
+			<result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+			<result column="sex" jdbcType="INTEGER" property="sex" />
+			<result column="tel" jdbcType="INTEGER" property="tel" />
+			<result column="email" jdbcType="VARCHAR" property="email" />
+			<result column="brithday" jdbcType="TIMESTAMP" property="brithday" />
+			<result column="address" jdbcType="INTEGER" property="address" />
+			<result column="add_info" jdbcType="VARCHAR" property="addInfo" />
+			<result column="account_id" jdbcType="INTEGER" property="accountId" />
+			<result column="height" jdbcType="INTEGER" property="height" />
+			<result column="image" jdbcType="VARCHAR" property="image" />
+			<result column="weight" jdbcType="INTEGER" property="weight" />
+			<result column="id_card" jdbcType="VARCHAR" property="idCard" />
+			<result column="id_type" jdbcType="INTEGER" property="idType" />
+			<result column="signature" jdbcType="VARCHAR" property="signature" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+		id,
+		nick_name,
+		sex,
+		tel,
+		email,
+		brithday,
+		address,
+		add_info,
+		account_id,
+		height,
+		image,
+		weight,
+		id_card,
+		id_type,
+		signature
+  </sql>  
+  
+  <select id="selectByEntity" parameterType="com.sangrade.base.api.model.UserProfile" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user_profile
+	<trim prefix="WHERE" prefixOverrides="AND|OR">
+	  <if test="id != null">
+		AND	id = #{id,jdbcType=INTEGER}
+	  </if>
+	  <if test="nickName != null">
+		AND	nick_name = #{nickName,jdbcType=VARCHAR}
+	  </if>
+	  <if test="sex != null">
+		AND	sex = #{sex,jdbcType=INTEGER}
+	  </if>
+	  <if test="tel != null">
+		AND	tel = #{tel,jdbcType=INTEGER}
+	  </if>
+	  <if test="email != null">
+		AND	email = #{email,jdbcType=VARCHAR}
+	  </if>
+	  <if test="brithday != null">
+		AND	brithday = #{brithday,jdbcType=TIMESTAMP}
+	  </if>
+	  <if test="address != null">
+		AND	address = #{address,jdbcType=INTEGER}
+	  </if>
+	  <if test="addInfo != null">
+		AND	add_info = #{addInfo,jdbcType=VARCHAR}
+	  </if>
+	  <if test="accountId != null">
+		AND	account_id = #{accountId,jdbcType=INTEGER}
+	  </if>
+	  <if test="height != null">
+		AND	height = #{height,jdbcType=INTEGER}
+	  </if>
+	  <if test="image != null">
+		AND	image = #{image,jdbcType=VARCHAR}
+	  </if>
+	  <if test="weight != null">
+		AND	weight = #{weight,jdbcType=INTEGER}
+	  </if>
+	  <if test="idCard != null">
+		AND	id_card = #{idCard,jdbcType=VARCHAR}
+	  </if>
+	  <if test="idType != null">
+		AND	id_type = #{idType,jdbcType=INTEGER}
+	  </if>
+	  <if test="signature != null">
+		AND	signature = #{signature,jdbcType=VARCHAR}
+	  </if>
+	</trim>
+  </select>    
+  
+   <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user_profile
+    <trim prefix="WHERE" prefixOverrides="AND|OR">
+         AND id = #{id,jdbcType=INTEGER}
+    </trim>
+  </select>  
+  
+ <delete id="deleteById" parameterType="java.lang.Integer">
+    delete from user_profile
+    <trim prefix="WHERE" prefixOverrides="AND|OR">
+        AND id = #{id,jdbcType=INTEGER}
+    </trim>
+  </delete>    
+  
+  <insert id="insert" parameterType="com.sangrade.base.api.model.UserProfile"  useGeneratedKeys="true" keyProperty="id">
+    insert into user_profile
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+	  <if test="id != null">
+		id,
+	  </if>
+	  <if test="nickName != null">
+		nick_name,
+	  </if>
+	  <if test="sex != null">
+		sex,
+	  </if>
+	  <if test="tel != null">
+		tel,
+	  </if>
+	  <if test="email != null">
+		email,
+	  </if>
+	  <if test="brithday != null">
+		brithday,
+	  </if>
+	  <if test="address != null">
+		address,
+	  </if>
+	  <if test="addInfo != null">
+		add_info,
+	  </if>
+	  <if test="accountId != null">
+		account_id,
+	  </if>
+	  <if test="height != null">
+		height,
+	  </if>
+	  <if test="image != null">
+		image,
+	  </if>
+	  <if test="weight != null">
+		weight,
+	  </if>
+	  <if test="idCard != null">
+		id_card,
+	  </if>
+	  <if test="idType != null">
+		id_type,
+	  </if>
+	  <if test="signature != null">
+		signature,
+	  </if>
+    </trim>  
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+		<if test="id != null">
+			#{id,jdbcType=INTEGER},
+		</if>
+		<if test="nickName != null">
+			#{nickName,jdbcType=VARCHAR},
+		</if>
+		<if test="sex != null">
+			#{sex,jdbcType=INTEGER},
+		</if>
+		<if test="tel != null">
+			#{tel,jdbcType=INTEGER},
+		</if>
+		<if test="email != null">
+			#{email,jdbcType=VARCHAR},
+		</if>
+		<if test="brithday != null">
+			#{brithday,jdbcType=TIMESTAMP},
+		</if>
+		<if test="address != null">
+			#{address,jdbcType=INTEGER},
+		</if>
+		<if test="addInfo != null">
+			#{addInfo,jdbcType=VARCHAR},
+		</if>
+		<if test="accountId != null">
+			#{accountId,jdbcType=INTEGER},
+		</if>
+		<if test="height != null">
+			#{height,jdbcType=INTEGER},
+		</if>
+		<if test="image != null">
+			#{image,jdbcType=VARCHAR},
+		</if>
+		<if test="weight != null">
+			#{weight,jdbcType=INTEGER},
+		</if>
+		<if test="idCard != null">
+			#{idCard,jdbcType=VARCHAR},
+		</if>
+		<if test="idType != null">
+			#{idType,jdbcType=INTEGER},
+		</if>
+		<if test="signature != null">
+			#{signature,jdbcType=VARCHAR},
+		</if>
+	</trim>
+  </insert>
+  
+  <update id="updateByEntity" parameterType="com.sangrade.base.api.model.UserProfile">
+    update user_profile 
+    <set>
+			<if test="id != null">
+				id = #{id,jdbcType=INTEGER},
+			</if>
+			<if test="nickName != null">
+				nick_name = #{nickName,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null">
+				sex = #{sex,jdbcType=INTEGER},
+			</if>
+			<if test="tel != null">
+				tel = #{tel,jdbcType=INTEGER},
+			</if>
+			<if test="email != null">
+				email = #{email,jdbcType=VARCHAR},
+			</if>
+			<if test="brithday != null">
+				brithday = #{brithday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="address != null">
+				address = #{address,jdbcType=INTEGER},
+			</if>
+			<if test="addInfo != null">
+				add_info = #{addInfo,jdbcType=VARCHAR},
+			</if>
+			<if test="accountId != null">
+				account_id = #{accountId,jdbcType=INTEGER},
+			</if>
+			<if test="height != null">
+				height = #{height,jdbcType=INTEGER},
+			</if>
+			<if test="image != null">
+				image = #{image,jdbcType=VARCHAR},
+			</if>
+			<if test="weight != null">
+				weight = #{weight,jdbcType=INTEGER},
+			</if>
+			<if test="idCard != null">
+				id_card = #{idCard,jdbcType=VARCHAR},
+			</if>
+			<if test="idType != null">
+				id_type = #{idType,jdbcType=INTEGER},
+			</if>
+			<if test="signature != null">
+				signature = #{signature,jdbcType=VARCHAR},
+			</if>
+   
+    </set>
+    <trim prefix="WHERE" prefixOverrides="AND|OR">
+         AND id = #{id,jdbcType=INTEGER}
+    </trim>
+  </update>   
+  
+</mapper>

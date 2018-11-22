@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sangrade.base.provider.dao.ThirdProfileDao">
+
+  <resultMap id="BaseResultMap" type="com.sangrade.base.api.model.ThirdProfile">
+			<id column="id" jdbcType="INTEGER" property="id" />
+			<result column="name" jdbcType="VARCHAR" property="name" />
+			<result column="account_key" jdbcType="VARCHAR" property="accountKey" />
+			<result column="account_secret" jdbcType="VARCHAR" property="accountSecret" />
+			<result column="domain_name" jdbcType="VARCHAR" property="domainName" />
+			<result column="open_account_key" jdbcType="VARCHAR" property="openAccountKey" />
+			<result column="open_account_value" jdbcType="VARCHAR" property="openAccountValue" />
+			<result column="call_back_url" jdbcType="VARCHAR" property="callBackUrl" />
+			<result column="end_point" jdbcType="VARCHAR" property="endPoint" />
+			<result column="is_del" jdbcType="INTEGER" property="isDel" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+		id,
+		name,
+		account_key,
+		account_secret,
+		domain_name,
+		open_account_key,
+		open_account_value,
+		call_back_url,
+		end_point,
+		is_del
+  </sql>  
+  
+  <select id="selectByEntity" parameterType="com.sangrade.base.api.model.ThirdProfile" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from third_profile
+        <trim prefix="WHERE" prefixOverrides = "AND|OR">
+		  <if test="id != null">
+		    AND	id = #{id,jdbcType=INTEGER}
+		  </if>		
+		  <if test="name != null">
+		    AND	name = #{name,jdbcType=VARCHAR}
+		  </if>		
+		  <if test="accountKey != null">
+		    AND	account_key = #{accountKey,jdbcType=VARCHAR}
+		  </if>		
+		  <if test="accountSecret != null">
+		    AND	account_secret = #{accountSecret,jdbcType=VARCHAR}
+		  </if>		
+		  <if test="domainName != null">
+		    AND	domain_name = #{domainName,jdbcType=VARCHAR}
+		  </if>		
+		  <if test="openAccountKey != null">
+		    AND	open_account_key = #{openAccountKey,jdbcType=VARCHAR}
+		  </if>		
+		  <if test="openAccountValue != null">
+		    AND	open_account_value = #{openAccountValue,jdbcType=VARCHAR}
+		  </if>		
+		  <if test="callBackUrl != null">
+		    AND	call_back_url = #{callBackUrl,jdbcType=VARCHAR}
+		  </if>		
+		  <if test="endPoint != null">
+		    AND	end_point = #{endPoint,jdbcType=VARCHAR}
+		  </if>		
+		  <if test="isDel != null">
+		    AND	is_del = #{isDel,jdbcType=INTEGER}
+		  </if>		
+　　		</trim>
+  </select>    
+  
+   <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from third_profile
+    <trim prefix="WHERE" prefixOverrides="AND|OR">
+         AND id = #{id,jdbcType=INTEGER}
+    </trim>
+  </select>  
+  
+ <delete id="deleteById" parameterType="java.lang.Integer">
+    delete from third_profile
+    <trim prefix="WHERE" prefixOverrides="AND|OR">
+        AND id = #{id,jdbcType=INTEGER}
+    </trim>
+  </delete>
+
+  <insert id="insert" parameterType="com.sangrade.base.api.model.ThirdProfile" useGeneratedKeys="true" keyProperty="id">
+    insert into third_profile
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+		  <if test="id != null">
+			id,
+		  </if>		
+		  <if test="name != null">
+			name,
+		  </if>		
+		  <if test="accountKey != null">
+			account_key,
+		  </if>		
+		  <if test="accountSecret != null">
+			account_secret,
+		  </if>		
+		  <if test="domainName != null">
+			domain_name,
+		  </if>		
+		  <if test="openAccountKey != null">
+			open_account_key,
+		  </if>		
+		  <if test="openAccountValue != null">
+			open_account_value,
+		  </if>		
+		  <if test="callBackUrl != null">
+			call_back_url,
+		  </if>		
+		  <if test="endPoint != null">
+			end_point,
+		  </if>		
+		  <if test="isDel != null">
+			is_del,
+		  </if>		
+    </trim>  
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="accountKey != null">
+				#{accountKey,jdbcType=VARCHAR},
+			</if>
+			<if test="accountSecret != null">
+				#{accountSecret,jdbcType=VARCHAR},
+			</if>
+			<if test="domainName != null">
+				#{domainName,jdbcType=VARCHAR},
+			</if>
+			<if test="openAccountKey != null">
+				#{openAccountKey,jdbcType=VARCHAR},
+			</if>
+			<if test="openAccountValue != null">
+				#{openAccountValue,jdbcType=VARCHAR},
+			</if>
+			<if test="callBackUrl != null">
+				#{callBackUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="endPoint != null">
+				#{endPoint,jdbcType=VARCHAR},
+			</if>
+			<if test="isDel != null">
+				#{isDel,jdbcType=INTEGER},
+			</if>
+    </trim>
+  </insert>
+  
+  <update id="updateByEntity" parameterType="com.sangrade.base.api.model.ThirdProfile">
+    update third_profile 
+    <set>
+			<if test="id != null">
+				id = #{id,jdbcType=INTEGER},
+			</if>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="accountKey != null">
+				account_key = #{accountKey,jdbcType=VARCHAR},
+			</if>
+			<if test="accountSecret != null">
+				account_secret = #{accountSecret,jdbcType=VARCHAR},
+			</if>
+			<if test="domainName != null">
+				domain_name = #{domainName,jdbcType=VARCHAR},
+			</if>
+			<if test="openAccountKey != null">
+				open_account_key = #{openAccountKey,jdbcType=VARCHAR},
+			</if>
+			<if test="openAccountValue != null">
+				open_account_value = #{openAccountValue,jdbcType=VARCHAR},
+			</if>
+			<if test="callBackUrl != null">
+				call_back_url = #{callBackUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="endPoint != null">
+				end_point = #{endPoint,jdbcType=VARCHAR},
+			</if>
+			<if test="isDel != null">
+				is_del = #{isDel,jdbcType=INTEGER},
+			</if>
+   
+    </set>
+    <trim prefix="WHERE" prefixOverrides="AND|OR">
+         AND id = #{id,jdbcType=INTEGER}
+    </trim>
+  </update>   
+  
+</mapper>
